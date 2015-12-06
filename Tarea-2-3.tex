@@ -1,0 +1,85 @@
+%----------------------------------------------------------------------------------------
+%	Paquetes y configuración
+%----------------------------------------------------------------------------------------
+% \documentclass{article}
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-lcroman]{babel}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xparse}
+\usepackage{courier}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+
+% Margenes
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+% Header y footer
+\pagestyle{fancy}
+\lhead{}
+\chead{\guiaRamo\: \guiaTitulo} % Centro
+\rhead{2015.2}
+\lfoot{UTFSM-CSJ}
+\cfoot{}
+\rfoot{Página\ \thepage\ de\ \protect\pageref{LastPage}} % Pagina
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+% \setlength\parindent{0pt} % Eliminar la indentación
+\makeatletter
+\newcommand{\titulo}[2]{%
+  \vspace{#2}\noindent{#1}\vspace{\baselineskip}%
+  \@afterindentfalse\@afterheading}
+\makeatother
+
+
+%----------------------------------------------------------------------------------------
+%	Meta Información
+%----------------------------------------------------------------------------------------
+\newcommand{\guiaTitulo}{Tarea 2-3} % titulo del informe
+\newcommand{\guiaFecha}{\today} % Fecha
+\newcommand{\guiaRamo}{Seminario de Modelos y Métodos Cuantitativos} % Ramo
+\newcommand{\guiaIniciales}{AL,JPEG} % Ramo
+\newcommand{\guiaProfesor}{Andrés Moreira} % Profesor
+
+%----------------------------------------------------------------------------------------
+%	Título
+%----------------------------------------------------------------------------------------
+\title{
+    \textmd{\textbf{\guiaRamo\\ \guiaTitulo}}\\
+    \vspace{0.1in}
+    \large{\textsc{Universidad Técnica Federico Santa María - Campus San Joaquín}}\\
+    \normalsize\vspace{0.1in}\small{\guiaFecha}\\
+    \vspace{0.1in}\large{\textit{Profesor \guiaProfesor}}
+}
+\author{
+    \textsc{Juan Pablo Escalona G.} \\
+    \small{juan.escalonag@alumnos.usm.cl} \\
+    {\small 201073515-k}
+    \and
+     \textsc{Alonso Lepe M.} \\
+    \small{alonso.lepe@alumnos.usm.cl}\\
+    {\small 201173593-5}
+\vspace{.5in}
+}
+\date{}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+\end{document}
