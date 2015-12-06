@@ -86,35 +86,70 @@ Si se elimina una arista en el segundo 00:00:01 entonces aún quedan 79799 arist
 Luego si cada segundo se elimina 1 arista y es preciso eliminar 79600 aristas entonces se tendría que esperar hasta las 22:06:40 (10 de la noche, 6 minutos y 40 segundos)
 
 \section{Pregunta 2}
-Matriz Laplaciana:
-[[2 -1 -1  0  0  0]
- [-1  2 -1  0  0  0]
- [-1 -1  3 -1  0  0]
- [ 0  0 -1  3 -1 -1]
- [ 0  0  0 -1  2 -1]
- [ 0  0  0 -1 -1  2]]
-Valores Propios: [-0.0, 0.438, 3.0, 3.0, 3.0, 4.562]
-Valor de Fiedler: 0.4384
-Vector de Fiedler: [0.465, 0.465, 0.261, -0.261, -0.465, -0.465]
+La Matriz laplaciana de un grafo se puede obtener a partir de la matriz de adyacencia siguiendo el siguiente formato:
+\begin{align}
+  l_{i,j} =
+  \begin{cases}
+    k_i  & \text{si } i = j  \\
+    -1  & \text{si } i \neq j  \\
+    0  & \text{e.t.o.c.}
+  \end{cases}
+\end{align}
+que es lo mismo que decir $l = K - A$ donde K es la matriz diagonal de los grados de cada nodo y A es la matriz de adyacencia. Luego para la matriz de adyacencia dada se tiene la siguiente matriz laplaciana:
+\begin{align}
+l = \begin{bmatrix}
+   2  &-1  &-1  & 0  & 0  & 0    \\
+   -1 &  2 & -1 &  0 &  0 &  0   \\
+   -1 & -1 &  3 & -1 &  0 &  0   \\
+    0 &  0 & -1 &  3 & -1 & -1   \\
+    0 &  0 &  0 & -1 &  2 & -1   \\
+    0 &  0 &  0 & -1 & -1 &  2
+\end{bmatrix}
+\end{align}
+
+Luego el valor de Fielder es el segundo valor propio mas pequeño, en este caso corresponde a 0.438 ubicado en la tercera columna como se muestra en las ecuaciones (\ref{eq:fielder1}) y (\ref{eq:fielder2}).
+
+
+\begin{align}
+  V &= \begin{bmatrix}
+     0.185 & -0.408 & \textbf{ 0.465} &  0.378 & -0.756 &  0.040 \\
+     0.185 & -0.408 & \textbf{ 0.465} & -0.734 &  0.463 &  0.238 \\
+    -0.657 & -0.408 & \textbf{ 0.261} &  0.357 &  0.292 & -0.278 \\
+     0.657 & -0.408 & \textbf{-0.261} &  0.357 &  0.292 & -0.278 \\
+    -0.185 & -0.408 & \textbf{-0.465} & -0.189 & -0.148 & -0.472 \\
+    -0.185 & -0.408 & \textbf{-0.465} & -0.168 & -0.145 &  0.751
+  \end{bmatrix} \label{eq:fielder1}\\
+  E &= \begin{bmatrix} \quad 4.562 & \quad 0.000 & \; \textbf{0.438} & \quad 3.000 & \; \; 3.000 & \;\;\; 3.000 \end{bmatrix} \label{eq:fielder2}
+\end{align}
+
+Es importante ordenarlos para obtener el valor de Fielder, pues este es el segundo menor valor propio.
+\begin{align}
+  \text{Valor de Fielder: }  & \; 0.4384\\
+  \text{Vector de Fielder: } & \begin{bmatrix}0.465 & 0.465 & 0.261 & -0.261 & -0.465 & -0.465\end{bmatrix}
+\end{align}
+
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=.6\linewidth]{img/p2.png}
-  \caption{Red chica dirigida. B: Betweenness, PR: PageRank, InD: Grado de entrada.}
-  \label{red:4}
+  \includegraphics[width=.7\linewidth]{img/p2.png}
+  \caption{Partición de la red en dos comunidades mostrando sus respectivos valores del vector propio.}
+  \label{red:2}
 \end{figure}
+
+Se decidió cortar en el 0, pues los valores se separan uniformemente en torno al este. Se observan claramente dos comunidades en esta red las que interactúan únicamente por el vértice 2-3.
+
 
 \section{Pregunta 4}
 
 \subsection{Grafico de la red}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=.6\linewidth]{img/p4.png}
+  \includegraphics[width=.5\linewidth]{img/p4.png}
   \caption{Red chica dirigida. B: Betweenness, PR: PageRank, InD: Grado de entrada.}
   \label{red:4}
 \end{figure}
 
-
+\subsection{Ranking de los índices}
 \begin{table}[H]
   \centering
   \renewcommand{\arraystretch}{1.1}
