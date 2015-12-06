@@ -139,6 +139,30 @@ Es importante ordenarlos para obtener el valor de Fielder, pues este es el segun
 Se decidió cortar en el 0, pues los valores se separan uniformemente en torno al este. Se observan claramente dos comunidades en esta red las que interactúan únicamente por el vértice 2-3.
 
 
+
+
+
+\section{Pregunta 3}
+Dos nodos de un grafo forman un \textit{2-componente} si existen al menos dos caminos independientes entre ellos. Un camino es una secuencia finita de aristas que permiten ir de un nodo inicial a un nodo final dentro de un grafo.
+
+Un \textit{2-componente} o \textit{biconnected component} tienen la particularidad que si se elimina una arista del grafo, aún sería posible llegar de un nodo a otro, pues originalmente existían dos posibles caminos.
+
+Por otro lado un \textit{2-core} es un conjunto de nodos donde cada uno está conectado a los demás con al menos 2 aristas. Un \textit{2-core} solo considera los nodos que estén conectados con una arista dentro del conjunto, si algún nodo tiene una arista a un nodo fuera del conjunto, dicha arista no se cuenta.
+
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.6\linewidth]{img/p3.png}
+  \caption{ Grafo 2-core con dos 2-componentes.}
+  \label{red:3}
+\end{figure}
+
+En la figura \ref{red:3} se aprecia un grafo con un solo conjunto \textit{2-core} con la totalidad de los nodos, pues todos los nodos del grafo están conectados a los demás con al menos 2 aristas.
+
+Por otra parte existen dos \textit{2-componentes} destacados por los colores. En este caso el \textit{2-componente} $\left[1,2,3,4\right]$ y el componente $\left[5,6,7,8,9,10\right]$. No puede existir un 2-componente entre el nodo 1 y el nodo 8, pues si o si hay que pasar por la arista 3-5 por lo que sería el mismo camino. Si se quita dicha arista no hay otra forma de llegar de 1 a 8.
+
+
 \section{Pregunta 4}
 
 \subsection{Grafico de la red}
