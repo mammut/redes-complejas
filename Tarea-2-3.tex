@@ -76,6 +76,33 @@
 \begin{document}
 
 \maketitle
+\section{Pregunta 1}
+Se tiene un grafo $G(n=400,p=1)$ esto implica que hay 79800 aristas que conectan a los 400 nodos entre todos. i.e. $\frac{399 \cdot 400}{2} = 79800$
+
+Para que una componente conexa sea gigante debe tener un $k = np > 1$, en este caso $k = 400$, como se necesita un $k <= 1$ para que deje de ser gigante, entonces $p$ debería ser a lo mas $\frac{1}{400} = 0.0025$
+
+Si se elimina una arista en el segundo 00:00:01 entonces aún quedan 79799 aristas, es decir, una probabilidad de $p = \frac{79799}{79800} = 0.9999$. Pero se sabe que se necesita una probabilidad de 0.0025, por lo que la componente dejará de ser conexa cuando solo hayan $\frac{E}{79800} = 0.0025 \implies E \sim 200$ aristas.
+
+Luego si cada segundo se elimina 1 arista y es preciso eliminar 79600 aristas entonces se tendría que esperar hasta las 22:06:40 (10 de la noche, 6 minutos y 40 segundos)
+
+\section{Pregunta 2}
+Matriz Laplaciana:
+[[2 -1 -1  0  0  0]
+ [-1  2 -1  0  0  0]
+ [-1 -1  3 -1  0  0]
+ [ 0  0 -1  3 -1 -1]
+ [ 0  0  0 -1  2 -1]
+ [ 0  0  0 -1 -1  2]]
+Valores Propios: [-0.0, 0.438, 3.0, 3.0, 3.0, 4.562]
+Valor de Fiedler: 0.4384
+Vector de Fiedler: [0.465, 0.465, 0.261, -0.261, -0.465, -0.465]
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.6\linewidth]{img/p2.png}
+  \caption{Red chica dirigida. B: Betweenness, PR: PageRank, InD: Grado de entrada.}
+  \label{red:4}
+\end{figure}
 
 \section{Pregunta 4}
 
@@ -84,6 +111,7 @@
   \centering
   \includegraphics[width=.6\linewidth]{img/p4.png}
   \caption{Red chica dirigida. B: Betweenness, PR: PageRank, InD: Grado de entrada.}
+  \label{red:4}
 \end{figure}
 
 
