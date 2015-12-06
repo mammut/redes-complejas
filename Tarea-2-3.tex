@@ -1,7 +1,3 @@
-%----------------------------------------------------------------------------------------
-%	Paquetes y configuración
-%----------------------------------------------------------------------------------------
-% \documentclass{article}
 \documentclass[letterpaper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish,es-lcroman]{babel}
@@ -16,6 +12,7 @@
 \usepackage{float}
 \usepackage{amsmath}
 \usepackage{hyperref}
+\usepackage{booktabs}
 
 
 % Margenes
@@ -25,6 +22,7 @@
 \textwidth=6.5in
 \textheight=9.0in
 \headsep=0.25in
+
 
 % Header y footer
 \pagestyle{fancy}
@@ -37,7 +35,6 @@
 \renewcommand\headrulewidth{0.4pt}
 \renewcommand\footrulewidth{0.4pt}
 
-% \setlength\parindent{0pt} % Eliminar la indentación
 \makeatletter
 \newcommand{\titulo}[2]{%
   \vspace{#2}\noindent{#1}\vspace{\baselineskip}%
@@ -45,18 +42,18 @@
 \makeatother
 
 
-%----------------------------------------------------------------------------------------
+%------------------------------------------------------------------------
 %	Meta Información
-%----------------------------------------------------------------------------------------
+%------------------------------------------------------------------------
 \newcommand{\guiaTitulo}{Tarea 2-3} % titulo del informe
 \newcommand{\guiaFecha}{\today} % Fecha
 \newcommand{\guiaRamo}{Seminario de Modelos y Métodos Cuantitativos} % Ramo
 \newcommand{\guiaIniciales}{AL,JPEG} % Ramo
 \newcommand{\guiaProfesor}{Andrés Moreira} % Profesor
 
-%----------------------------------------------------------------------------------------
+%------------------------------------------------------------------------
 %	Título
-%----------------------------------------------------------------------------------------
+%------------------------------------------------------------------------
 \title{
     \textmd{\textbf{\guiaRamo\\ \guiaTitulo}}\\
     \vspace{0.1in}
@@ -76,10 +73,44 @@
 }
 \date{}
 
-%----------------------------------------------------------------------------------------
-
 \begin{document}
 
 \maketitle
+
+\section{Pregunta 4}
+
+\subsection{Grafico de la red}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.6\linewidth]{img/p4.png}
+  \caption{Red chica dirigida. B: Betweenness, PR: PageRank, InD: Grado de entrada.}
+\end{figure}
+
+
+\begin{table}[H]
+  \centering
+  \renewcommand{\arraystretch}{1.1}
+  \begin{tabular}{@{}ccccccccccc@{}}
+    \toprule
+       \multicolumn{3}{c}{\textsc{Grado Entrada}} & \phantom{abc} & \multicolumn{3}{c}{\textsc{Betweenness}} & \phantom{abc} & \multicolumn{3}{c}{\textsc{PageRank}}\\
+       \cmidrule{1-3}\cmidrule{5-7}\cmidrule{9-11}
+       Posición & Nodo & Valor & & Posición & Nodo & Valor & & Posición & Nodo & Valor\\
+       \midrule
+      1 & v5 & 3 &&  1 & v3 & 18 && 1 & v5 & 0.209 \\
+      2 & v4 & 2 &&  2 & v5 & 15 && 2 & v4 & 0.180 \\
+      2 & v3 & 2 &&  3 & v4 & 13 && 3 & v3 & 0.163 \\
+      3 & v1 & 1 &&  4 & v1 & 10 && 4 & v6 & 0.120 \\
+      3 & v2 & 1 &&  5 & v6 & 9  && 4 & v7 & 0.120 \\
+      3 & v6 & 1 &&  6 & v8 & 3  && 5 & v1 & 0.078 \\
+      3 & v7 & 1 &&  7 & v2 & 2  && 6 & v2 & 0.065 \\
+      3 & v8 & 1 &&  8 & v7 & 0  && 6 & v8 & 0.065 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Ranking de cada índice para la red chica.}
+\end{table}
+
+
+\section{Referencias}
+\section{Apéndice}
 
 \end{document}
