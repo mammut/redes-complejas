@@ -107,7 +107,7 @@ l = \begin{bmatrix}
 \end{bmatrix}
 \end{align}
 
-Luego el valor de Fielder es el segundo valor propio mas pequeño, en este caso corresponde a 0.438 ubicado en la tercera columna como se muestra en las ecuaciones (\ref{eq:fielder1}) y (\ref{eq:fielder2}).
+l valor de Fiedler es el segundo valor propio mas pequeño, en este caso corresponde a 0.438 ubicado en la tercera columna como se muestra en las ecuaciones (\ref{eq:fiedler1}) y (\ref{eq:fiedler2}).
 
 
 \begin{align}
@@ -118,14 +118,14 @@ Luego el valor de Fielder es el segundo valor propio mas pequeño, en este caso 
      0.657 & -0.408 & \textbf{-0.261} &  0.357 &  0.292 & -0.278 \\
     -0.185 & -0.408 & \textbf{-0.465} & -0.189 & -0.148 & -0.472 \\
     -0.185 & -0.408 & \textbf{-0.465} & -0.168 & -0.145 &  0.751
-  \end{bmatrix} \label{eq:fielder1}\\
-  E &= \begin{bmatrix} \quad 4.562 & \quad 0.000 & \; \textbf{0.438} & \quad 3.000 & \; \; 3.000 & \;\;\; 3.000 \end{bmatrix} \label{eq:fielder2}
+  \end{bmatrix} \label{eq:fiedler1}\\
+  E &= \begin{bmatrix} \quad 4.562 & \quad 0.000 & \; \textbf{0.438} & \quad 3.000 & \; \; 3.000 & \;\;\; 3.000 \end{bmatrix} \label{eq:fiedler2}
 \end{align}
 
-Es importante ordenarlos para obtener el valor de Fielder, pues este es el segundo menor valor propio.
+Es importante ordenarlos para obtener el valor de Fiedler, pues este es el segundo menor valor propio.
 \begin{align}
-  \text{Valor de Fielder: }  & \; 0.4384\\
-  \text{Vector de Fielder: } & \begin{bmatrix}0.465 & 0.465 & 0.261 & -0.261 & -0.465 & -0.465\end{bmatrix}
+  \text{Valor de Fiedler: }  & \; 0.4384\\
+  \text{Vector de Fiedler: } & \begin{bmatrix}0.465 & 0.465 & 0.261 & -0.261 & -0.465 & -0.465\end{bmatrix}
 \end{align}
 
 
@@ -168,10 +168,21 @@ Por otra parte existen dos \textit{2-componentes} destacados por los colores. En
 \subsection{Grafico de la red}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=.5\linewidth]{img/p4.png}
+  \includegraphics[width=.5\linewidth]{img/p4-all.png}
   \caption{Red chica dirigida. B: Betweenness, PR: PageRank, InD: Grado de entrada.}
   \label{red:4}
 \end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.32\linewidth]{img/p4-indegree.png}\hfill
+  \includegraphics[width=.32\linewidth]{img/p4-betweenness.png}\hfill
+  \includegraphics[width=.32\linewidth]{img/p4-pageranks.png}
+  \caption{Red chica según el tamaño porcentual para cada indice.}
+  \label{red:4-all}
+\end{figure}
+
+
 
 \subsection{Ranking de los índices}
 \begin{table}[H]
