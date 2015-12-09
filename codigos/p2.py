@@ -6,8 +6,6 @@ import numpy as np
 
 # Build the graph
 p2 = G.Graph([(0,1),(0,2),(1,2),(2,3),(3,4),(3,5),(4,5)])
-# p2 = G.Graph([(0,1),(0,2),(2,3),(2,4)])
-# p2 = G.Graph([(0,1),(0,5),(0,6),(1,3),(1,6),(2,3),(2,4),(2,5),(3,4)])
 
 laplacian_matrix = p2.laplacian()
 w, v             = np.linalg.eig(p2.laplacian()) # Eigen values (w) and eigen vectors (v)

@@ -4,15 +4,13 @@
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{extramarks}
-\usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{graphicx}
-\usepackage{listings}
-\usepackage{xparse}
-\usepackage{courier}
 \usepackage{float}
 \usepackage{amsmath}
 \usepackage{hyperref}
 \usepackage{booktabs}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{listings}
 
 
 % Margenes
@@ -35,11 +33,43 @@
 \renewcommand\headrulewidth{0.4pt}
 \renewcommand\footrulewidth{0.4pt}
 
+
+% Syntax Highlight
+\lstdefinestyle{basic} {
+  basicstyle=\footnotesize\ttfamily,
+  numbers=left,
+  numberstyle=\footnotesize\color{cyan}\ttfamily,
+  numbersep=5pt,
+  frame=tb,
+  rulecolor=\color{cyan},
+  captionpos=t,
+  keywordstyle=\color{blue},
+  breaklines=true,
+  commentstyle=\color{gray},
+  columns=fullflexible,
+  stringstyle=\color{Purple}
+}
+\newcommand{\python}[2]{
+    \begin{itemize}
+        \item[]\lstinputlisting[style=basic,language=python,caption=#2,label=#1]{#1}
+    \end{itemize}
+}
+\lstset{
+  literate={ó}{{\'o}}1
+           {á}{{\'a}}1
+           {ú}{{\'u}}1
+           {í}{{\'i}}1
+           {é}{{\'e}}1
+}
+
+
 \makeatletter
 \newcommand{\titulo}[2]{%
   \vspace{#2}\noindent{#1}\vspace{\baselineskip}%
   \@afterindentfalse\@afterheading}
 \makeatother
+
+
 
 
 %------------------------------------------------------------------------
@@ -85,6 +115,8 @@ Si se elimina una arista en el segundo 00:00:01 entonces aún quedan 79799 arist
 
 Luego si cada segundo se elimina 1 arista y es preciso eliminar 79600 aristas entonces se tendría que esperar hasta las 22:06:40 (10 de la noche, 6 minutos y 40 segundos)
 
+Sobre este análisis se realizó el código \ref{codigos/p1.py} del anexo en el que se crea una red ER de 400 nodos y probabilidad 1. Luego se comenzó a eliminar nodos hasta lograr un grado promedio < 1. Se ejecutó el código en un computador con un 2.5 GHz Intel Core i5 y 8 GB ram, tardó 8 minutos 29 segundos en eliminar aristas hasta lograr un grado promedio de 1. Finalmente se eliminaron 79600 aristas por lo que empíricamente también terminó a las 22:06:40
+
 \section{Pregunta 2}
 La Matriz laplaciana de un grafo se puede obtener a partir de la matriz de adyacencia siguiendo el siguiente formato:
 \begin{align}
@@ -95,7 +127,9 @@ La Matriz laplaciana de un grafo se puede obtener a partir de la matriz de adyac
     0  & \text{e.t.o.c.}
   \end{cases}
 \end{align}
+
 que es lo mismo que decir $l = K - A$ donde K es la matriz diagonal de los grados de cada nodo y A es la matriz de adyacencia. Luego para la matriz de adyacencia dada se tiene la siguiente matriz laplaciana:
+
 \begin{align}
 l = \begin{bmatrix}
    2  &-1  &-1  & 0  & 0  & 0    \\
@@ -210,5 +244,11 @@ Por otra parte existen dos \textit{2-componentes} destacados por los colores. En
 
 \section{Referencias}
 \section{Apéndice}
+
+\python{codigos/p1.py}{p1.py}
+\python{codigos/p2.py}{p2.py}
+\python{codigos/p3.py}{p3.py}
+\python{codigos/p4.py}{p4.py}
+
 
 \end{document}
