@@ -239,8 +239,46 @@ Por otra parte existen dos \textit{2-componentes} destacados por los colores. En
     \bottomrule
   \end{tabular}
   \caption{Ranking de cada índice para la red chica.}
+  \label{table:1}
+\end{table}
+Lo más evidente que se observa del Cuadro \ref{table:1} asi como también en la Figura \ref{red:4-all} es que los nodos v3, v4 y v5 están siempre en los primeros 3 puestos sin excepción, i.e. tienden a ser los nodos más relevantes de la red independiente del índice que se utilice para rankearlos.
+
+Un aspecto interesante es la importancia del nodo v7, en el caso del grado de entrada el nodo v7 tiene solo 1 nodo de entrada por lo que su importancia es pequeña, en PageRank por otro lado tiene un nodo de entrada, pero esta arista proviene del nodo más importante de la red por lo que v7 adquiere una mayor importancia que los otros nodos que solo tienen grado de entrada 1.
+
+Curiosamente el betweenness del nodo v7 es el más pequeño de todos en dicho ranking, pues no existen caminos que pasen por el. Es una importante diferencia entre Betweenness y PageRank. PageRank considera la importancia de un nodo según la importancia del nodo desde donde se llega, más aún si el enlace es mutuo, esto por la frecuencia con que se visitará dicho nodo al azar. Betweenness al contrario solo considera la cantidad de caminos que utilizan dicho nodo.
+
+El más simple de todos es el grado de entrada, se observa que es muy similar al resultado obtenido en PageRank, pero PageRank le da más importancia a aquellos que llegan de un nodo importante, no solo de la cantidad de referencias que tenga.
+
+El nodo v1 es muy similar en grado de entrada y PageRank, pero betweenness le asigna una gran importancia, siendo que tan solo tiene 1 grade de entrada, esto se podría explicar por la cantidad de caminos que permite construir ya que tiene dos aristas de salida, parece ser que tendría un gran flujo, menor que su predecesor el nodo v3.
+\section{Pregunta 5}
+
+Para esta pregunta se programaron los scripts \ref{codigos/p5-1-gnutella.py}, \ref{codigos/p5-2-delfines.py}, \ref{codigos/p5-3-erdos-renyi-gnutella.py} y \ref{codigos/p5-4-erdos-renyi-delfines.py}. En cada caso se carga una red diferente, gnutella, delfines y Erdös-Renyi. Luego para cada red se eliminan los nodos al azar, en orden decreciente de grado y en orden decreciente de betweenness. Luego se calcula el porcentaje de nodos que fue necesario eliminar para que el tamaño de la componente gigante se disminuyera a la mitad.
+
+\begin{table}[H]
+  \centering
+  \renewcommand{\arraystretch}{1.1}
+  \begin{tabular}{@{}lcccc@{}}
+    \toprule
+       Red & Azar & Grado Decreciente & Betweenness Decreciente\\
+       \midrule
+       \textsc{Gnutella} & 33.208\% &  3.019\% &  3.145\% \\
+       \textsc{Delfines} & 38.710\% & 24.194\% & 12.903\% \\
+       \textsc{Erdös-Renyi Gnutella} & 30.566\% & 9.128\% & 5.786\% \\
+       \textsc{Erdös-Renyi Delfines} & 46.774\% & 32.258\% & 27.419\% \\
+
+    \bottomrule
+  \end{tabular}
+  \caption{Porcentaje de nodos eliminados para cada red y para cada heurística de eliminación. Los valores al azar y las redes Erdös-Renyi son el promedio de 25 ejecuciones cada uno.}
+  \label{table:2}
 \end{table}
 
+La red \textsc{gnutella} está compuesta de 795 nodos y 852 aristas mientras que la red \textsc{delfines} está compuesta por 62 nodos y 159 aristas. Para ambas redes se realizó una ER con la misma cantidad de nodos y aristas para comparar.
+
+El resultado general mas destacable es que eliminar nodos al azar no es un buen método de reducción de componentes gigantes, pues la cantidad de nodos necesarios a eliminar variaba entre un 30\% y un 47\%, valores muy elevados, pues se está eliminando casi la mitad de la red para deshacerse de la componente gigante.
+
+Por el contrario el método que presenta los mejores resultados tiene ser el de eliminación por betweenness decreciente. Para redes grandes como \textsc{gnutella} basta eliminar solo el 3.145\%, un valor similar fue necesario para la ER correspondiente.
+
+El método del grado decreciente se comporta bien en redes grandes al igual que el método de betweennes. Ambos métodos caen en redes mas pequeñas como la de \textsc{delfines}, en donde se tiene que eliminar 24.193\% de los nodos con el método del grado y 12.903\% en el caso del betweenness. Estos valores altos se replican en la ER correspondiente a delfines, en donde para todos los métodos se tienen valores superiores a los 27\%.
 
 \section{Referencias}
 \section{Apéndice}
@@ -249,6 +287,10 @@ Por otra parte existen dos \textit{2-componentes} destacados por los colores. En
 \python{codigos/p2.py}{p2.py}
 \python{codigos/p3.py}{p3.py}
 \python{codigos/p4.py}{p4.py}
+\python{codigos/p5-1-gnutella.py}{p5-1-gnutella.py}
+\python{codigos/p5-2-delfines.py}{p5-2-delfines.py}
+\python{codigos/p5-3-erdos-renyi-gnutella.py}{p5-3-erdos-renyi-gnutella.py}
+\python{codigos/p5-4-erdos-renyi-delfines.py}{p5-3-erdos-renyi-delfines.py}
 
 
 \end{document}
