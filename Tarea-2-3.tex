@@ -280,6 +280,85 @@ Por el contrario el método que presenta los mejores resultados tiene ser el de 
 
 El método del grado decreciente se comporta bien en redes grandes al igual que el método de betweennes. Ambos métodos caen en redes mas pequeñas como la de \textsc{delfines}, en donde se tiene que eliminar 24.193\% de los nodos con el método del grado y 12.903\% en el caso del betweenness. Estos valores altos se replican en la ER correspondiente a delfines, en donde para todos los métodos se tienen valores superiores a los 27\%.
 
+\section{Pregunta 9}
+
+\subsection*{(a)}
+Para este experimento se utilizó la red ``pescado.gml'' y se pretende hallar reciprocidad corregida de la red. Para esto se procedió a encontrar la siguiente expresión:
+
+\begin{align}
+  \rho = \frac{\rho_1 - \bar{a}}{1 - \bar{a}}
+\end{align}
+en donde
+\begin{align}
+  \rho_1 &= \frac{1}{m}\sum_{i \neq j} a_{ij}a_{ji} \\
+  \bar{a} &= \frac{1}{n(n-1)}\sum_{i \neq j} a_{ij}
+\end{align}
+los valores encontrados fueron
+\begin{itemize}
+  \item $\rho_1  =  0.4672$
+  \item $\bar{a} = 0.1211$
+\end{itemize}
+luego $\rho = 0.3938 > 0$ lo que implica que la red presenta reciprocidad, la reciprocidad mide la tendencia de pares de nodos para formar conexiones mutuas entre ellos. En este caso se tiene una tendencia $\rho = 0.3938$ a formar conexiones mutuas entre pares de nodos, lo cual tiene sentido para el comercio e intercambio de pescado entre naciones.
+
+\subsection*{(b)}
+Ahora se procede a realizar un histograma para el peso total que entra a cada nodo y el peso total que sale de un nodo. Para esto basta con calcular la suma de las filas o columnas de la matriz de adyacencia con pesos. Esto luego se plotea como histograma, los resultados se adjuntan en la Figura~\ref{chart:1}.
+
+Inmediatamente se reconoce en ambas distribuciones una ley de potencia, hay unos pocos que tienen mucho, y hay muchos que tienen muy poco. Para hallar las ecuaciones correspondientes a cada distribución se utilizo excel para realizar la regresión potencial correspondiente dado los valores entregados por la función de histograma en matplotlib.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.49\linewidth]{img/p9-s-in.png}\hfill
+  \includegraphics[width=.49\linewidth]{img/p9-s-out.png}\hfill
+  \caption{Histogramas para $S^{in}$ y $S^{out}$ respectiamente.}
+  \label{chart:1}
+\end{figure}
+Las expresiones encontradas fueron:
+\begin{align}
+  f^{in}(x)  &= 79.673\cdot x^{-3.722} & \qquad R^2 = 0.86766 \\
+  f^{out}(x) &= 73.115\cdot x^{-2.07}  & \qquad R^2 = 0.93403
+\end{align}
+
+\subsection*{(c)}
+En este experimento se intenta hallar alguna relación entre la suma de los pesos de los arcos que entran y salen de un nodo. Para esto se realiza el gráfico \ref{chart:2}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.75\linewidth]{img/p9-s-s.png}\hfill
+  \caption{$S^{in}$ vs $S^{out}$}
+  \label{chart:2}
+\end{figure}
+
+En este gráfico no se observa ninguna relación entre las variables, i.e. no hay relación entre la cantidad de pescado importado y exportado en un país.
+
+\subsection*{(d)}
+Ahora se trabaja con el grafo no dirigido en que las aristas son la suma de los pesos del grafo dirigido anterior.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.49\linewidth]{img/p9-k.png}\hfill
+  \includegraphics[width=.49\linewidth]{img/p9-s.png}\hfill
+  \caption{Histogramas para P(k), P(s)}
+  \label{chart:3}
+\end{figure}
+En este caso se hallan nuevamente leyes de potencia. Las expresiones halladas fueron:
+
+
+\subsection*{(e)}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.75\linewidth]{img/p9-k-vs-s.png}
+  \caption{Grado vs fuerza de los nodos.}
+  \label{chart:4}
+\end{figure}
+
+En este caso se observa una ley de potencia positiva, de este grafico se obtuvo la siguiente expresión:
+
+\begin{align}
+f(x) &= 2.5736x^{0.4313} & \qquad R^{2} = 0.87075
+\end{align}
+
+el $R^2$ indica la presencia de una buena relación entre las variables.
+
+
 \section{Referencias}
 \section{Apéndice}
 
