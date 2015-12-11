@@ -126,4 +126,4 @@ Mx_2_avg=Mx_2.sum(axis=0)/11.
 plt.plot(Mx_1_avg)
 plt.plot(Mx_2_avg)
 plt.legend(['(B_1,B_2)', '(C_1,C_2)'], loc='upper left')
-plt.show()
+plt.savefig('../img/p8-3.png')

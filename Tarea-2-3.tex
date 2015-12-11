@@ -199,7 +199,7 @@ Por otra parte existen dos \textit{2-componentes} destacados por los colores. En
 
 \section{Pregunta 4}
 
-\subsection{Grafico de la red}
+\subsection{Gráfico de la red}
 \begin{figure}[H]
   \centering
   \includegraphics[width=.5\linewidth]{img/p4-all.png}
@@ -280,6 +280,75 @@ Por el contrario el método que presenta los mejores resultados tiene ser el de 
 
 El método del grado decreciente se comporta bien en redes grandes al igual que el método de betweennes. Ambos métodos caen en redes mas pequeñas como la de \textsc{delfines}, en donde se tiene que eliminar 24.193\% de los nodos con el método del grado y 12.903\% en el caso del betweenness. Estos valores altos se replican en la ER correspondiente a delfines, en donde para todos los métodos se tienen valores superiores a los 27\%.
 
+\section{Pregunta 6}
+\section{Pregunta 7}
+Ahora se trabaja con la red definida ``correos.gdf'' la cual muestra los intercambios de correo electrónico al interior de una universidad catalana. Se obtuvieron los siguientes resultados.
+
+\begin{table}[H]
+  \centering
+  \renewcommand{\arraystretch}{1.1}
+  \begin{tabular}{@{}ccccccc@{}}
+    \toprule
+       \multicolumn{3}{c}{\textsc{Correos}} & \phantom{abc} & \multicolumn{3}{c}{\textsc{Correos Recableada}}\\
+       \cmidrule{1-3}\cmidrule{5-7}
+       k-core & nodos & vértices & & k-core & nodos & vértices\\
+       \midrule
+       1-core  & 1133 &  5451   && 1-core  & 1133 & 5451 \\
+        2-core  & 1133 &  5451  && 2-core  & 1133 & 5451 \\
+        3-core  & 978  &  5296  && 3-core  & 979  & 5297 \\
+        4-core  & 848  &  5040  && 4-core  & 853  & 5047 \\
+        5-core  & 748  &  4746  && 5-core  & 747  & 4733 \\
+        6-core  & 665  &  4422  && 6-core  & 668  & 4422 \\
+        7-core  & 534  &  3796  && 7-core  & 580  & 3986 \\
+        8-core  & 434  &  3224  && 8-core  & 486  & 3435 \\
+        9-core  & 349  &  2681  && 9-core  & 383  & 2729 \\
+        10-core & 238  &  1837  && 10-core & 197  & 1313 \\
+        11-core & 121  &  845  \\
+        12-core & 12   &  66   \\
+    \bottomrule
+  \end{tabular}
+  \caption{Porcentaje de nodos eliminados para cada red y para cada heurística de eliminación. Los valores al azar y las redes Erdös-Renyi son el promedio de 25 ejecuciones cada uno.}
+  \label{table:3}
+\end{table}
+
+Para la red original se obtuvo una Modularidad de 0.507 y una Asortatividad de 0.078
+mientras que para la red recableada se obtuvo una Modularidad de 0.282 y una Asortatividad de -0.009
+
+Lo primero que resalta es que los 1 y 2 core son el mismo, pues tienen igual número de nodos y aristas. Luego a medida que aumenta el k-core los componentes son cada vez mas pequeños como es de esperar. Pareciera haber una tendencia lineal en el número de nodos y algo mas lenta en el numero de aristas pero que cae abruptamente al llegar al 12-core, las aristas decaen de 845 a 66, mientras que en componentes mas grandes las aristas bajaban en el orden de $10^2$.
+
+La modularidad de la red original fue de $0.507$ lo que indica una fuerte tendencia a la existencia de comunidades en la red. En la red recableada se obtuvo un valor de modularidad de 0.282 lo que es menor a 0.3, indicador de que no existen comunidades en la red.
+
+Con respecto a la Asortatividad en la red original se obtuvo un valor de 0.078 lo cual indica que no existe una preferencia de los nodos para unirse con nodos de grado similar, i.e. los que mas intercambian emails no forman comunidad entre ellos, sino que se comunican todos con todos pero no en la misma cantidad.
+
+Para observar posibles comunidades se utilizó gephi sobre la red original con el algoritmo Chinese Whispers. Se encontraron una gran comunidad, una comunidad mediana y varias otras pequeñas de hasta 30 nodos.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.66\linewidth]{img/p7.png}
+  \caption{Visualizacion de comunidades en la red original con el algoritmo chinese whispers}
+  \label{fig:6}
+\end{figure}
+
+La figura \ref{fig:6} apoya el resultado de la modularidad obtenida en la red original que es probable que existan comunidades.
+
+
+\section{Pregunta 8}
+Para graficar las curvas se realizaron 10 iteraciones de lo pedido en el enunciado, luego se calculó el promedio de las modularidades de cada iteración (para que la curva fuese más aleatoria). Haciendo esto se construyen gráficos que representan 4 grafos ER distintos:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.49\linewidth]{img/p8.png}\hfill
+  \includegraphics[width=.49\linewidth]{img/p8-1.png}\\
+  \includegraphics[width=.49\linewidth]{img/p8-2.png}\hfill
+  \includegraphics[width=.49\linewidth]{img/p8-3.png}
+  \caption{Gráficos del promedio de las modularidades de cuatro grafos ER dirigidos distintos (modificando las aristas)}
+  \label{chart:30}
+\end{figure}
+
+Observando los gráficos obtenidos se aprecia que la tendencia es tener mayor modularidad en las iteraciones intermedias. Lógicamente en la iteración cero (en donde el grafo es puramente ER) la modularidad es casi nula, pues es una de las características de este tipo de grafo. Una vez que se empieza a modificar las aristas de las particiones se observa que la modularidad comienza a subir, por lo que la aparición de clusters debiese ser inminente. Por otro lado, al trabajar con promedios de modularidades se tiene una mejor aproximación del comportamiento del modelo ER al modificarlo de la manera pedida.
+
+
+
 \section{Pregunta 9}
 
 \subsection*{(a)}
@@ -355,13 +424,13 @@ En este caso se hallan nuevamente leyes de potencia. Las expresiones halladas fu
   \label{chart:4}
 \end{figure}
 
-En este caso se observa una ley de potencia positiva, de este grafico se obtuvo la siguiente expresión:
+En este caso se observa una ley de potencia positiva, de este gráfico se obtuvo la siguiente expresión:
 
 \begin{align}
 f(x) &= 2.5736x^{0.4313} & \qquad R^{2} = 0.87075
 \end{align}
 
-el $R^2$ indica la presencia de una buena relación entre las variables.
+el $R^2$ indica la presencia de una buena relación entre las variables. Es decir, la fuerza de un nodo guarda relación con el grado de este cuando se trata de un grafo no dirigido con peso y sigue una ley de potencia.
 
 \subsection*{(f)}
 
@@ -371,8 +440,45 @@ El coeficiente de clustering indica cuan probable es que dos nodos vecinos esté
 
 En este caso particular se observa una mayor predispocición a tripletas en la red con peso.
 
+\section{Pregunta 10}
+\begin{itemize}
+  \item $t_0 = 58732$
+  \item $t_1 = 396548$
+  \item $t_2 = 451711$
+  \item $t_3 = 4003085$
+  \item $m_+ = 592551$
+  \item $m   = 711782$
+\end{itemize}
+
+\section{(c)}
+Si reemplazamos los valores anteriores se aprecia que los valores no coinciden. Si se ve desde el punto de vista en que la cantidad de aristas $m_{+}$ deber ser exactamente la suma de las mismas existentes en los triángulos $t_1$, $t_2$ y $t_3$, los números deberían coincidir pues $t_0$ por hipótesis no posee aristas del tipo $m_{+}$. Sin embargo es posible que no coincidan ya que algunas aristas $m_{+}$ pueden pertenecer a mas de una relación triangular.
+
+\section{(d)}
+En primer lugar se debe calcular la probabilidad de que una arista sea del tipo $m_+$:
+\begin{align}
+  p = \frac{m_+}{m} = 0,8325
+\end{align}
+
+Luego, la probabilidad de que el triángulo sea:
+
+\begin{itemize}
+  \item Tipo 0: $p(0) = 1-p =0,1675$
+  \item Tipo 1: $p(1) = 0,8325 \cdot 0,1675 \cdot 0,1675 = 0,0233$
+  \item Tipo 2: $p(2) = 0,8325 \cdot 0,8325 \cdot 0,1675 = 0,1161$
+  \item Tipo 3: $P(3) = 0,8325 \cdot 0,8325 \cdot 0,8325 = 0,577$
+\end{itemize}
+
+\section{(e)}
+Al observar las probabilidades se puede apreciar que si tomamos una arista al azar lo más probable es que encontremos una del tipo 3, luego del tipo 0, tipo 2 y por último del tipo 1. Ahora, si se observa las cantidades de aristas de cada tipo, se puede afirmar que las probabilidades respaldan estos datos, pues mientras más aristas hayan de un tipo más probable es “escoger” una de ellas. Por lo tanto, si tomamos una arista al azar lo más probable es que termine siendo una en que sea una relación en que una de las personas confía en las otras dos.
+
+
 
 \section{Referencias}
+
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{Referencias}
+
 \section{Apéndice}
 
 \python{codigos/p1.py}{p1.py}
@@ -383,6 +489,8 @@ En este caso particular se observa una mayor predispocición a tripletas en la r
 \python{codigos/p5-2-delfines.py}{p5-2-delfines.py}
 \python{codigos/p5-3-erdos-renyi-gnutella.py}{p5-3-erdos-renyi-gnutella.py}
 \python{codigos/p5-4-erdos-renyi-delfines.py}{p5-3-erdos-renyi-delfines.py}
+\python{codigos/p7.py}{p7.py}
+\python{codigos/p8.py}{p8.py}
 \python{codigos/p9.py}{p9.py}
 
 
