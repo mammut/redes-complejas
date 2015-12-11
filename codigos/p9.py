@@ -25,25 +25,24 @@ rho_ = rho_ / float(m)
 
 print "Rho =", round(  ( rho_ - a_ )/ ( 1 - a_ )  , 4)
 
-# Parte 2
+# B
 s = np.matrix(g.get_adjacency(attribute="weight")._get_data())
 s_in = np.squeeze(np.asarray(s.sum(axis=0, dtype=float)))
 s_out = np.squeeze(np.asarray(s.sum(axis=1, dtype=float).T))
 
-n, bins, c = plt.hist(s_in, bins=4)
+plt.hist(s_in, bins=4)
 plt.savefig('../img/p9-s-in.png')
 plt.close()
-n, bins, c = plt.hist(s_out, bins=9)
+
+plt.hist(s_out, bins=9)
 plt.savefig('../img/p9-s-out.png')
-
-
 plt.close()
-x = range(len(s_out))
+
 plt.plot(s_in, s_out, '.')
 plt.savefig('../img/p9-s-s.png')
 plt.close()
 
-# d.
+# D
 g_undirected = g.as_undirected(mode="collapse", combine_edges=dict(weight=sum))
 
 plt.hist(g_undirected.degree())
@@ -52,11 +51,18 @@ plt.close()
 
 s_data = np.matrix(g_undirected.get_adjacency(attribute="weight")._get_data())
 s = np.squeeze(np.asarray(s_data.sum(axis=0, dtype=float)))
-plt.hist(s)
+plt.hist(s, bins=3)
 plt.savefig('../img/p9-s.png')
 plt.close()
 
-
+# E
 plt.plot(s, g_undirected.degree(), '.')
 plt.savefig('../img/p9-k-vs-s.png')
-print g_undirected.degree()
+plt.close()
+
+# F
+sin_peso = G.mean(filter(lambda x: x == x, g_undirected.transitivity_local_undirected()))
+con_peso = G.mean(filter(lambda x: x == x, g_undirected.transitivity_local_undirected(weights="weight")))
+
+print "sin peso:", sin_peso
+print "con peso:", con_peso

@@ -339,6 +339,11 @@ Ahora se trabaja con el grafo no dirigido en que las aristas son la suma de los 
   \label{chart:3}
 \end{figure}
 En este caso se hallan nuevamente leyes de potencia. Las expresiones halladas fueron:
+\begin{align}
+  f^{k}(x)  &= 65.941\cdot x^{-1.302} & \qquad R^2 = 0.88592 \\
+  f^{s}(x)  &= 109.97\cdot x^{-4.088}  & \qquad R^2 = 0.9194
+\end{align}
+
 
 
 \subsection*{(e)}
@@ -358,6 +363,14 @@ f(x) &= 2.5736x^{0.4313} & \qquad R^{2} = 0.87075
 
 el $R^2$ indica la presencia de una buena relación entre las variables.
 
+\subsection*{(f)}
+
+Por ultimo se comparan los coeficientes de clustering de la red con y sin peso, para la red sin peso se obtuvo un valor de 0.784 y para la red con peso se obtuvo 0.890. Se observa un mayor numero en la red con peso, lo que indica una mayor tendencia a formar clusters en la red con peso que en la red sin peso.
+
+El coeficiente de clustering indica cuan probable es que dos nodos vecinos estén conectados. Es la razón de los triángulos y tripletas conectadas en el grafo.
+
+En este caso particular se observa una mayor predispocición a tripletas en la red con peso.
+
 
 \section{Referencias}
 \section{Apéndice}
@@ -370,6 +383,7 @@ el $R^2$ indica la presencia de una buena relación entre las variables.
 \python{codigos/p5-2-delfines.py}{p5-2-delfines.py}
 \python{codigos/p5-3-erdos-renyi-gnutella.py}{p5-3-erdos-renyi-gnutella.py}
 \python{codigos/p5-4-erdos-renyi-delfines.py}{p5-3-erdos-renyi-delfines.py}
+\python{codigos/p9.py}{p9.py}
 
 
 \end{document}
